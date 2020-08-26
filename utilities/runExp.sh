@@ -7,6 +7,7 @@ targetDir=$3
 OUTFILE=$4
 CfgFile="$DIR/config.mk";
 OutputMake="$DIR/outputMakefile";
+OutputMakeBase="$DIR/outputMakefile.baseline";
 PerfCsvOut="$DIR/perfExp.csv"
 PerfCsvOut="$DIR/tmp"
 PerfTempOut="temp.perfout"
@@ -16,9 +17,9 @@ ProfileCmd="timeout 120m bash $DIR/utilities/time_benchmark.sh ./$kernel"
 #if grep -q "pragma unroll_and_jam" *.c; then
   echo found
   echo $targetDir >> $PerfCsvOut ;  
-  echo $targetDir >>  $OutputMake ;  
-  echo "BASELINE=========" >> $OutputMake ;
-	make clean; timeout 45m make -f Makefile.baseline 2>>$OutputMake ; O0=`$ProfileCmd` ;
+  echo $targetDir >>  $OutputMakeBase ;  
+  echo "BASELINE=========" >> $OutputMakeBase ;
+	make clean; timeout 45m make -f Makefile.baseline 2>>$OutputMakeBase ; O0=`$ProfileCmd` ;
   #O0=`grep "L1\|cycles" $PerfTempOut | cut -f1 -d',' | perl -p  -e 's/\R/,/g;'`;
   mv $kernel ${kernel}_baseline
   #perl -p  -e 's/\R//g;'  $PerfTempOut >> $PerfCsvOut ; echo "" >> $PerfCsvOut

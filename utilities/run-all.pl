@@ -53,7 +53,7 @@ foreach $cat (@categories) {
         my $targetDir = $target.'/'.$dir;
         #my $command = "cd $targetDir; make clean; make; ./$kernel";
         my $command = "cd $targetDir; bash $bashRunExpFile $DIR $kernel $targetDir $OUTFILE  ";
-	$command .= " 2>> $OUTFILE" if ($OUTFILE ne '');
+        #$command .= " 2>> $OUTFILE" if ($OUTFILE ne '');
         print($command."\n");
         system($command);
    }
