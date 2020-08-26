@@ -40,8 +40,8 @@ compute_mean_exec_time()
     val11=`echo "a=$val1 - $time;if(0>a)a*=-1;a" | bc 2>&1`;
     test_err=`echo "$val11" | grep error`;
     if ! [ -z "$test_err" ]; then
-	echo "[ERROR] Program output does not match expected single-line with time.";
-	echo "[ERROR] The program must be a PolyBench, compiled with -DPOLYBENCH_TIME";
+	#echo "[ERROR] Program output does not match expected single-line with time.";
+	#echo "[ERROR] The program must be a PolyBench, compiled with -DPOLYBENCH_TIME";
 	exit 1;
     fi;
     val12=`echo "a=$val2 - $time;if(0>a)a*=-1;a" | bc`;
@@ -53,19 +53,19 @@ compute_mean_exec_time()
 	variance="0$variance";
     fi;
     compvar=`echo "$variance $VARIANCE_ACCEPTED" | awk '{ if ($1 < $2) print "ok"; else print "error"; }'`;
-    if [ "$compvar" = "error" ]; then
-	echo "[WARNING] Variance is above thresold, unsafe performance measurement";
-	echo "        => max deviation=$variance%, tolerance=$VARIANCE_ACCEPTED%";
-	WARNING_VARIANCE="$WARNING_VARIANCE\n$benchcomputed: max deviation=$variance%, tolerance=$VARIANCE_ACCEPTED%";
-    else
-	echo "[INFO] Maximal deviation from arithmetic mean of 3 average runs: $variance%";
-    fi;
+    #if [ "$compvar" = "error" ]; then
+    ##echo "[WARNING] Variance is above thresold, unsafe performance measurement";
+    ##echo "        => max deviation=$variance%, tolerance=$VARIANCE_ACCEPTED%";
+    #  WARNING_VARIANCE="$WARNING_VARIANCE\n$benchcomputed: max deviation=$variance%, tolerance=$VARIANCE_ACCEPTED%";
+    #else
+    #  #echo "[INFO] Maximal deviation from arithmetic mean of 3 average runs: $variance%";
+    #fi;
     PROCESSED_TIME="$time";
     rm -f avg.out;
 }
 
-echo "[INFO] Running 5 times $1..."
-echo "[INFO] Maximal variance authorized on 3 average runs: $VARIANCE_ACCEPTED%...";
+#echo "[INFO] Running 5 times $1..."
+#echo "[INFO] Maximal variance authorized on 3 average runs: $VARIANCE_ACCEPTED%...";
 
 $1 > ____tempfile.data.polybench;
 $1 >> ____tempfile.data.polybench;
@@ -74,5 +74,6 @@ $1 >> ____tempfile.data.polybench;
 $1 >> ____tempfile.data.polybench;
 
 compute_mean_exec_time "____tempfile.data.polybench" "$1";
-echo "[INFO] Normalized time: $PROCESSED_TIME";
+#echo "[INFO] Normalized time: $PROCESSED_TIME";
+echo "$PROCESSED_TIME,$variance"
 rm -f ____tempfile.data.polybench;
