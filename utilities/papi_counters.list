@@ -2,4 +2,14 @@
 // C/C++ comments are allowed.
 // Both native and standard PAPI events are supported.
 "PAPI_TOT_CYC",
-"L1D:REPL",
+"PAPI_L1_DCM",
+"PAPI_LST_INS",
+//"PAPI_L1_DCH",
+"PAPI_L1_DCA",
+"PAPI_STL_ICY",
+"PAPI_BR_TKN",
+"PAPI_BR_MSP",
+"PAPI_TOT_IIS",
+"PAPI_FP_OPS",
+"PAPI_LD_INS",
+//"PAPI_VEC_INS",
