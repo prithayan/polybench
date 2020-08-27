@@ -39,7 +39,7 @@
 
 #  ifdef EXTRALARGE_DATASET
 #   define TSTEPS 1000
-#   define N 2800
+#   define N 2480
 #  endif
 
 

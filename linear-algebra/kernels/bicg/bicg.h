@@ -33,13 +33,13 @@
 #  endif
 
 #  ifdef LARGE_DATASET
-#   define M 1900
-#   define N 2100
+#   define M (16*2048)
+#   define N (16*2048)
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define M 1800
-#   define N 2200
+#   define M (16*2048)
+#   define N (16*2048)
 #  endif
 
 

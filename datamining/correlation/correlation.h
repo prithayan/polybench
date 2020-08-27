@@ -38,8 +38,8 @@
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define M 2600
-#   define N 3000
+#   define M (2*2600)
+#   define N (2*3000)
 #  endif
 
 

@@ -38,8 +38,8 @@
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define W 7680
-#   define H 4320
+#   define W (32*256)
+#   define H (32*256*8)
 #  endif
 
 
