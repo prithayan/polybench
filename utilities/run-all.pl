@@ -34,8 +34,8 @@ my @categories = ('linear-algebra/blas',
                   'datamining',
                   'stencils',
                   'medley');
-my @runApps = ('2mm','3mm','cholesky','lu','ludcmp');
-my @runApps = ('deriche');
+my @runApps = ('lu','ludcmp','covariance','correlation','heat-3d','seidel-2d');
+#my @runApps = ('deriche');
 my %filterApps = map { $_ => 1 } @runApps;  
 
 
@@ -49,6 +49,7 @@ foreach $cat (@categories) {
         next if (!(-d $target.'/'.$dir));
 
         my $kernel = $dir;
+        next unless(exists($filterApps{$kernel})) ;
         #
         my $targetDir = $target.'/'.$dir;
         #my $command = "cd $targetDir; make clean; make; ./$kernel";
