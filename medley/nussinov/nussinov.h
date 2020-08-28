@@ -34,7 +34,7 @@
 #  endif
 
 #  ifdef EXTRALARGE_DATASET
-#   define N 5500
+#   define N 2048
 #  endif
 
 
