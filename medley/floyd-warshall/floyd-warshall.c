@@ -67,9 +67,12 @@ void kernel_floyd_warshall(int n,
   int i, j, k;
 
 #pragma scop
+#pragma unroll_and_jam(UNROLL_1)
   for (k = 0; k < _PB_N; k++)
     {
+#pragma unroll_and_jam(UNROLL_2)
       for(i = 0; i < _PB_N; i++)
+#pragma unroll_and_jam(UNROLL_3)
 	for (j = 0; j < _PB_N; j++)
 	  path[i][j] = path[i][j] < path[i][k] + path[k][j] ?
 	    path[i][j] : path[i][k] + path[k][j];
