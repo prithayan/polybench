@@ -13,7 +13,7 @@ PerfCsvOut="$DIR/tmp"
 PerfTempOut="temp.perfout"
 ProfileCmd="perf stat -e cycles,instructions,cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,branches,branch-misses,L1-icache-loads,L1-icache-load-misses -x, -o  $PerfTempOut ./$kernel "
 ProfileCmd="timeout 120m bash $DIR/utilities/time_benchmark.sh ./$kernel"
-#ProfileCmd="./$kernel"
+ProfileCmd="./$kernel"
 #ProfileCmd="perf stat -e cycles,L1-dcache-loads,L1-dcache-load-misses -x, -o  $PerfTempOut ./$kernel "
 #if grep -q "pragma unroll_and_jam" *.c; then
   echo found
